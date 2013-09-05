@@ -1,0 +1,16 @@
+{
+  "name": "WunderFocus",
+  "description": "A Chrome extension to show only one item from Wunderlist at a time.",
+  "version": "0.1",
+  "background": {
+    "scripts": ["jquery.js","background.js","wunderfocus.js"]
+  },
+  "permissions": [
+    "tabs", "https://www.wunderlist.com/*"
+  ],
+  "browser_action": {
+      "default_title": "WunderFocus",
+      "default_icon": "wunderfocus16.png"
+  },
+  "manifest_version": 2
+}
