@@ -1,57 +1,99 @@
-var elements = new Array("#lists",".addtask","h2.completed",".completed-tasks","#task-actions","#detail",".tasks li");
-
-var elements_visible = $("#lists").is(":visible");
-
-if (elements_visible) {
-	// SET BG
-	$(".main-interface").css("background-color", "#FFF");
-	
-	// TOGGLE ELEMENTS
-	for ( var i in elements ) {
-		$(elements[i]).hide();
-	}
-	$(".tasks li:first-child").show();
-	
-	// LAYOUT
-	$("#tasks").css("right","300px");
-	
-	// STYLE
-	$(".tasks li:first-child").css("position", "relative").css("top", "200px").css("height", "100%");;
-
-	$(".tasks li:first-child .task-body").css("-webkit-box-shadow","none").css("box-shadow","none");
-	$(".tasks li:first-child .task-body").css("background","none").css("border-radius","none");
-	$(".tasks li:first-child .task-body").css("box-sizing","none").css("height","100%");
-	
-	$(".tasks li:first-child .task-body .task-separator").hide();
-	$(".tasks li:first-child .task-body .task-star").hide();
-	
-	$(".tasks li:first-child .task-body .title-wrapper").css("overflow","visible").css("white-space","normal");
-	$(".tasks li:first-child .task-body .title-wrapper").css("line-height","30px");
-	$(".tasks li:first-child .task-body .title-wrapper .title").css("font-size","40px");
-	
-//	var checky = $(".tasks li:first-child .task-body .title-wrapper").height()/2 - 4;
-//	$(".tasks li:first-child .task-body .task-checkbox").css("position","relative").css("top", checky);
+if($('#focus_overlay').length === 0) {
+	create_overlay($);
+	create_text($);
+	create_button($);
 }
 else {
-	// RESET BG
-	$(".main-interface").removeAttr("style");
+	remove_overlay($);
+}
 
-	// RESET ELEMENTS
-	for (var i in elements){
-		$(elements[i]).removeAttr("style");
-	}
+function create_overlay($) {
+	var d = document.createElement('div');
+	$(d).css({
+		background: '#EEE',
+		width: '100%',
+		height: '100%',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		'text-align': 'center',
+		zIndex: 1000
+	}).attr('id', 'focus_overlay');
+	$('body').append(d);
+}
 
-	// RESET LAYOUT
-	$("#tasks").removeAttr("style");
+function create_text($) {
+	var mytext = $(".tasks li:first-child .task-body .title-wrapper .title").text();
+	var d = document.createElement('div');
+	$(d).css({
+		'font-size': '40px',
+		'font-weight': 'bold',
+		'width': '70%',
+		'margin': '0px auto',
+		'padding': '200px 40px 20px 40px'
+	}).attr('id', 'focus_text').text(mytext);
+	$('#focus_overlay').append(d);
+}
+
+function create_button($) {
+	var d = document.createElement('input');
+	d.setAttribute("type","button");
+	d.setAttribute("value","Done");
+	$(d).css({
+		'-webkit-appearance': 'button',
+		'position': 'relative',
+		'-moz-box-shadow': '2px 2px 6px 0px #e8e8e8',
+		'-webkit-box-shadow': '2px 2px 6px 0px #e8e8e8',
+		'box-shadow': '2px 2px 6px 0px #e8e8e8',
+		'height': '1.85em',
+		'border': '1px solid #7a7a7a',
+		'-webkit-border-radius': '3px',
+		'-moz-border-radius': '3px',
+		'border-radius': '3px',
+		'background-color': '#f3f3f3',
+		'padding': '0 12px',
+		'color': '#555',
+		'-webkit-text-size-adjust': '140%',
+		'font-size': '20px',
+		'cursor': 'pointer',
+		'font-weight': 'bold',
+		'margin': '20px'
+	}).attr('id', 'focus_button');
+	$('#focus_overlay').append(d);
 	
-	// STYLE
-	$(".tasks li:first-child").removeAttr("style");
+	$(d).hover( function(){
+		$(this).css({
+			'background-color': '#fafafa',
+			'color': '#616161'
+		});
+	},
+	function(){
+		$(this).css({
+			'background-color': '#f3f3f3',
+			'color': '#555'
+		});
+	});
 	
-	$(".tasks li:first-child .task-body").removeAttr("style");
-	
-	$(".tasks li:first-child .task-body .task-separator").removeAttr("style");
-	$(".tasks li:first-child .task-body .task-star").removeAttr("style");
-	
-	$(".tasks li:first-child .task-body .title-wrapper").removeAttr("style");
-	$(".tasks li:first-child .task-body .title-wrapper .title").removeAttr("style");
+	$(d).mousedown( function(){
+		$(this).css({
+			'top': '1px',
+			'right': '-1px',
+			'-moz-box-shadow': '1px 1px 4px 0px #e8e8e8',
+			'-webkit-box-shadow': '1px 1px 4px 0px #e8e8e8',
+			'box-shadow': '1px 1px 4px 0px #e8e8e8'
+		});
+	});
+	$(d).mouseup( function(){
+		$(this).css({
+			'top': '0px',
+			'right': '0px',
+			'-moz-box-shadow': '2px 2px 6px 0px #e8e8e8',
+			'-webkit-box-shadow': '2px 2px 6px 0px #e8e8e8',
+			'box-shadow': '2px 2px 6px 0px #e8e8e8'
+		});
+	});
+}
+
+function remove_overlay($) {
+	$('#focus_overlay').remove();
 }
