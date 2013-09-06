@@ -1,7 +1,7 @@
 WunderFocus
 ===========
 
-A Chrome extension to show only one item from Wunderlist at a time, à la nowdothis.com.
+A Chrome extension to focus on the current task in Wunderlist. Inspired by nowdothis.com.
 
 How to use
 ----------
