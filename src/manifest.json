@@ -1,6 +1,6 @@
 {
   "name": "WunderFocus",
-  "description": "A Chrome extension to show only one item from Wunderlist at a time.",
+  "description": "A Chrome extension to focus on the current task in Wunderlist.",
   "version": "0.1",
   "background": {
     "scripts": ["jquery.js","background.js","wunderfocus.js"]
