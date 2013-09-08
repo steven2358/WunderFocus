@@ -37,7 +37,9 @@ var button_css = {
 	'font-size': '20px',
 	'cursor': 'pointer',
 	'font-weight': 'bold',
-	'margin': '20px 20px 12px'
+	'margin': '20px 20px 12px',
+	'top': '0',
+	'right': '0'
 };
 
 var button_hover_css = {
