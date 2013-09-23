@@ -117,7 +117,8 @@ function create_smalltext($) {
 function update_task_text($) {
 	if (get_number_of_items($) > 0) {
 		var mytext = get_task_text($,1);
-		$('#focus_tasktext').text(mytext);
+		var mytext_html = convert_urls_to_html(mytext);
+		$('#focus_tasktext').html(mytext_html);
 	}
 	else {
 		remove_task_text($);
@@ -150,7 +151,8 @@ function mark_button_alldone($) {
 function mark_done_actions($) {
 	if (get_number_of_items($)>1){
 		var mytext = get_task_text($,2);
-		$('#focus_tasktext').text(mytext);
+		var mytext_html = convert_urls_to_html(mytext);
+		$('#focus_tasktext').html(mytext_html);
 		update_button_text($);
 	} else {
 		remove_task_text($);
@@ -158,6 +160,13 @@ function mark_done_actions($) {
 	}
 	mark_current_done($);
 }
+
+// try to detect urls. Source: http://stackoverflow.com/a/37687/1221212
+function convert_urls_to_html(text) {
+	var exp = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+	return text.replace(exp,"<a href='$1' target=\"_blank\">$1</a>"); 
+}
+
 
 // REMOVE
 
