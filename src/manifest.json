@@ -10,7 +10,11 @@
   ],
   "browser_action": {
       "default_title": "WunderFocus",
-      "default_icon": "wunderfocus16.png"
+      "default_icon": "wunderfocus48.png"
+  },
+  "icons": {
+    "16": "wunderfocus16.png",
+	"48": "wunderfocus48.png"
   },
   "manifest_version": 2
 }
