@@ -189,7 +189,7 @@ function get_number_of_items($) {
 }
 
 function get_task_text($, ind){
-	return $("#tasks .task-list ol:not(.hidden) li:nth-child("+ind+") .taskItem-body .taskItem-titleWrapper-title").text();
+	return $("#tasks .task-list ol:first-child li:nth-child("+ind+") .taskItem-body .taskItem-titleWrapper-title").text();
 }
 
 function mark_current_done($) {
