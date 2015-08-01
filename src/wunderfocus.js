@@ -119,6 +119,7 @@ function create_smalltext($) {
 function update_task_text($) {
 	if (get_number_of_items($) > 0) {
 		var mytext = get_task_text($,1);
+    console.log("update: "+mytext);
 		var mytext_html = convert_urls_to_html(mytext);
 		$('#focus_tasktext').html(mytext_html);
 	}
@@ -153,6 +154,7 @@ function mark_button_alldone($) {
 function mark_done_actions($) {
 	if (get_number_of_items($)>1){
 		var mytext = get_task_text($,2);
+    console.log("mytext: "+mytext);
 		var mytext_html = convert_urls_to_html(mytext);
 		$('#focus_tasktext').html(mytext_html);
 		update_button_text($);
@@ -187,11 +189,11 @@ function get_number_of_items($) {
 }
 
 function get_task_text($, ind){
-	return $(".tasks li:nth-child("+ind+") .task-body .title-wrapper .title").text();
+	return $("#tasks .task-list ol:not(.hidden) li:nth-child("+ind+") .taskItem-body .taskItem-titleWrapper-title").text();
 }
 
 function mark_current_done($) {
-	$(".tasks li:first-child .task-body .task-checkbox").trigger('click');
+	$(".tasks li:first-child .taskItem-body .checkBox").trigger('click');
 }
 
 // MAIN

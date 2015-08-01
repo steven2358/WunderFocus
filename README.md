@@ -1,14 +1,14 @@
 WunderFocus
 ===========
 
-A Google Chrome extension to focus on the current task in Wunderlist. Inspired by nowdothis.com.
+A Google Chrome extension to focus on the current task in Wunderlist. Inspired by [http://nowdothis.com/](nowdothis.com).
 
 How to use
 ----------
 
 1. Install extension.
-2. Visit a list in your Wunderlist account.
-3. Press button.
+2. Visit a list in [your Wunderlist account](https://www.wunderlist.com/).
+3. Press extension button.
 
 Why
 ---
